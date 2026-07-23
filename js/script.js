@@ -2,6 +2,9 @@
    yungdv · portfolio — monochrome · real-data edition
    ========================================================= */
 
+// ⚠️ ЗАМЕНИ на свой реальный email (используется в кнопке "скопировать" и в терминале)
+const EMAIL = 'dvuzhilovd05@yandex.ru';
+
 /* ---------- DATA (реальные проекты с github.com/yungdv) ---------- */
 const PROJECTS = [
     {
@@ -60,19 +63,21 @@ const PROJECTS = [
         tags:['PHP','Yii2','RBAC','MySQL'],
         github:null
     },
-    /* ---- в разработке (заглушки, которые ты будешь делать) ---- */
-    { icon:'📝', status:'wip', progress:100, title:'Todo-приложение', desc:'Управление задачами: создание, редактирование, фильтрация по статусу.', tags:['JS','HTML/CSS'], github:'https://github.com/yungdv' },
-    { icon:'🧮', status:'wip', progress:100, title:'Калькулятор', desc:'Базовые операции, история вычислений и ввод с клавиатуры.', tags:['JS','HTML/CSS'], github:'https://github.com/yungdv' },
-    { icon:'🌤', status:'wip', progress:85,  title:'Погода', desc:'OpenWeatherMap API, геолокация и адаптивный интерфейс.', tags:['JS','API','CSS'], github:'https://github.com/yungdv' },
-    { icon:'🔐', status:'wip', progress:90,  title:'Генератор паролей', desc:'Настройка длины, наборов символов и оценка стойкости.', tags:['JS'], github:'https://github.com/yungdv' },
-    { icon:'🎮', status:'wip', progress:75,  title:'Игра-кликер', desc:'Idle-механика, прокачка, достижения и сохранение прогресса.', tags:['JS','LocalStorage'], github:'https://github.com/yungdv' },
-    { icon:'🚀', status:'wip', progress:100, title:'Лендинг', desc:'Одностраничник с Hero, портфолио, навыками и контактами.', tags:['HTML','CSS','JS'], github:'https://github.com/yungdv' }
+    {
+        icon:'🚀', status:'live',
+        title:'Лендинг (этот сайт)',
+        desc:'Одностраничник-портфолио: Hero, проекты, навыки, контакты, кастомный курсор, терминал и топографический фон. Всё с нуля, без шаблонов.',
+        tags:['HTML','CSS','JS'],
+        github:'https://github.com/yungdv/yungdv.github.io',
+        live:'https://yungdv.github.io',
+        image:'images/preview.png'
+    }
 ];
 
 const ICON = n => `https://cdn.simpleicons.org/${n}/ffffff`;
 const SKILLS = {
     'Языки': [
-        ['python','Python',90],['java','Java',75],['javascript','JavaScript',65],
+        ['python','Python',90],['openjdk','Java',75],['javascript','JavaScript',65],
         ['php','PHP',65],['html5','HTML / CSS',85],['mysql','SQL',70]
     ],
     'Фреймворки и библиотеки': [
@@ -81,7 +86,7 @@ const SKILLS = {
     ],
     'Инструменты': [
         ['git','Git',80],['githubactions','GitHub Actions',60],['gradle','Gradle',65],
-        ['docker','Docker',55],['linux','Linux',70],['visualstudiocode','VS Code',90]
+        ['docker','Docker',55],['linux','Linux',70]
     ]
 };
 
@@ -180,7 +185,8 @@ const SKILLS = {
 /* ---------- TYPING EFFECT ---------- */
 (function typing(){
     const el=document.getElementById('typed'); if(!el) return;
-    const phrases=[,'Junior-разработчик','Ищу работу','Пишу на Python и Java'];
+    // ✅ исправлено: убрана лишняя запятая, из-за которой первый элемент был undefined
+    const phrases=['Junior-разработчик','Python · Java · PHP','ищу первую работу'];
     let pi=0,ci=0,del=false;
     function tick(){
         const cur=phrases[pi];
@@ -216,6 +222,12 @@ function renderProjects(){
         if(currentFilter==='wip') return p.status==='wip';
         return true;
     });
+
+    if(!list.length){
+        g.innerHTML = '<p class="projects-empty">// тут пока пусто — но скоро что-то появится 👀</p>';
+        return;
+    }
+
     g.innerHTML = list.map(p=>{
         const badge = p.status==='live' ? '<span class="badge badge--live">live</span>'
                     : p.status==='practice' ? '<span class="badge badge--practice">practice</span>'
@@ -224,24 +236,30 @@ function renderProjects(){
         const progress = p.status==='wip' ? `
             <div class="progress-label"><span>готовность</span><span>${p.progress}%</span></div>
             <div class="progress-bar"><div class="progress-fill" data-w="${p.progress}"></div></div>` : '';
-        const link = p.github
+        const media = p.image
+            ? `<div class="project-image"><img src="${p.image}" alt="${p.title}"></div>`
+            : `<div class="project-image">${p.icon}</div>`;
+        const liveLink = p.live
+            ? `<a class="project-link" href="${p.live}" target="_blank" rel="noopener">live
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M17 7H7M17 7v10"/></svg></a>`
+            : '';
+        const ghLink = p.github
             ? `<a class="project-link" href="${p.github}" target="_blank" rel="noopener">github
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M17 7H7M17 7v10"/></svg></a>`
             : `<span class="project-link project-link--muted">приватный репозиторий</span>`;
         return `
         <article class="project-card">
-            <div class="project-image">${p.icon}</div>
+            ${media}
             <div class="project-content">
                 <div class="project-meta"><h3 class="project-title">${p.title}</h3>${badge}</div>
                 <p class="project-desc">${p.desc}</p>
                 <div class="chips">${chips}</div>
                 ${progress}
-                ${link}
+                <div class="project-links">${liveLink}${ghLink}</div>
             </div>
         </article>`;
     }).join('');
 
-    // если секция уже видна — сразу заполняем бары (observer повторно не сработает)
     const sec=document.getElementById('projects');
     if(sec && sec.classList.contains('visible')){
         g.querySelectorAll('[data-w]').forEach(b=>{ b.style.width=b.dataset.w+'%'; });
@@ -249,6 +267,7 @@ function renderProjects(){
     if(window.__cursorRebind) window.__cursorRebind();
 }
 
+/* ---------- RENDER SKILLS (без процентов) ---------- */
 function renderSkills(){
     const c=document.getElementById('skillsContainer'); if(!c) return;
     c.innerHTML=Object.entries(SKILLS).map(([cat,list])=>`
@@ -257,8 +276,7 @@ function renderSkills(){
         ${list.map(([ic,nm,lv])=>`
           <div class="skill-item">
             <div class="skill-head">
-              <span class="skill-name"><img src="${ICON(ic)}" alt="" onerror="this.style.display='none'">${nm}</span>
-              <span class="skill-pct">${lv}%</span>
+              <span class="skill-name"><img src="${ICON(ic)}" alt="" onerror="this.style.visibility='hidden'">${nm}</span>
             </div>
             <div class="skill-bar"><div class="skill-progress" data-w="${lv}"></div></div>
           </div>`).join('')}
@@ -317,7 +335,7 @@ function setupNav(){
 function setupCopy(){
     const btn=document.getElementById('copyEmailBtn'), toast=document.getElementById('toast');
     btn.addEventListener('click',()=>{
-        navigator.clipboard.writeText('contact@yung.dev').then(()=>{
+        navigator.clipboard.writeText(EMAIL).then(()=>{
             toast.querySelector('.toast__msg').textContent='email скопирован';
             toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),2200);
         });
@@ -329,18 +347,18 @@ function setupCopy(){
     const overlay=document.getElementById('termOverlay'), body=document.getElementById('termBody'),
           input=document.getElementById('termInput'), open=document.getElementById('termTrigger'),
           close=document.getElementById('termClose');
-    const EMAIL='contact@yung.dev';
     const BANNER=[
-        ' __  __           _     ____  __     __',
-        ' \\ \\/ /_   _ _ __ | |__ |  _ \\ \\ \\   / /',
-        '  \\  /| | | | \'_ \\| \'_ \\| | | \\ \\ \\ / / ',
-        '  /  \\| |_| | | | | |_) | |_| |\\ \\ V /  ',
-        ' /_/\\_\\\\__,_|_| |_|_.__/|____/  \\_/   ',''
+        '                             _       ',
+        ' _   _ _   _ _ __   __ _  __| |_   __',
+        '| | | | | | | \'_ \\ / _` |/ _` \\ \\ / /',
+        '| |_| | |_| | | | | (_| | (_| |\\ V / ',
+        ' \\__, |\\__,_|_| |_|\\__, |\\__,_| \\_/  ',
+        ' |___/             |___/             ',''
     ];
     const HELP=['доступные команды:','  about      — кто я','  skills     — мой стек','  projects   — список проектов',
         '  contact    — как связаться','  social     — ссылки','  whoami     — текущий пользователь',
         '  date       — дата и время','  banner     — показать баннер','  clear      — очистить экран','  exit       — закрыть терминал'];
-    const ABOUT=['yungdv · junior software developer','студент 4 курса. основной язык — python, также java и php.',
+    const ABOUT=['yungdv · junior software developer','основной язык — python, также java и php.',
         'делал ml-детекцию сна, мод для minecraft с twitch-интеграцией, веб на django и yii2.',
         'сейчас ищу первую работу в разработке.'];
 
@@ -356,7 +374,7 @@ function setupCopy(){
             case 'banner': print(BANNER,'muted'); break;
             case 'skills': print(['языки:    python, java, javascript, php, html/css, sql',
                 'фреймворки: django, fabric, yii2, pandas, ml/cv, tailwind',
-                'инструменты: git, github actions, gradle, docker, linux, vscode']); break;
+                'инструменты: git, github actions, gradle, docker, linux']); break;
             case 'projects': PROJECTS.filter(p=>p.status!=='wip').forEach(p=>print([`  • ${p.title}`])); break;
             case 'contact': print([`email: ${EMAIL}`,'telegram: @yungdv','github: github.com/yungdv']); break;
             case 'social': print(['github.com/yungdv','t.me/yungdv']); break;

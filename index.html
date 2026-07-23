@@ -8,6 +8,8 @@
     <meta property="og:title" content="yungdv — Junior Developer">
     <meta property="og:description" content="Портфолио разработчика в монохромной эстетике.">
     <meta property="og:type" content="website">
+    <!-- сделай скрин сайта, положи в images/preview.png и раскомментируй: -->
+    <!-- <meta property="og:image" content="https://yungdv.github.io/images/preview.png"> -->
     <title>yungdv — Junior Developer</title>
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
@@ -66,6 +68,7 @@
             </div>
             <p class="hero__label">// junior software developer</p>
             <h1 class="name">yungdv</h1>
+            <!-- текст печатается из script.js (массив phrases) -->
             <p class="subtitle" id="typed"></p>
             <div class="status-badge"><span class="status-dot"></span> Open to work</div>
             <div class="tech-stack">
@@ -81,16 +84,18 @@
         </div>
     </section>
 
-    <!-- ABOUT + STATS -->
+    <!-- ABOUT -->
     <section class="stats">
         <div class="container">
             <p class="about-text">Привет, я <strong>yungdv</strong> — начинающий разработчик. Пишу в основном на <strong>Python</strong>, но также работаю с <strong>Java</strong> и <strong>PHP</strong>. Увлекаюсь всем подряд: от нейросетей до модов для Minecraft и веб-приложений на Django и Yii2. Сейчас ищу первую работу, где смогу расти в команде и писать полезный код.</p>
+
+            <!-- 👇 цифры ЧЕСТНЫЕ (у тебя реально 8 проектов). Хочешь — раскомментируй:
             <div class="stats__grid">
                 <div class="stat"><div class="stat__num" data-count="8">0</div><div class="stat__label">проектов</div></div>
-                <div class="stat"><div class="stat__num" data-count="7">0</div><div class="stat__label">репозиториев</div></div>
+                <div class="stat"><div class="stat__num" data-count="8">0</div><div class="stat__label">репозиториев</div></div>
                 <div class="stat"><div class="stat__num" data-count="15" data-suffix="+">0</div><div class="stat__label">технологий</div></div>
-                <div class="stat"><div class="stat__num" data-count="4">0</div><div class="stat__label">курс</div></div>
             </div>
+            -->
         </div>
     </section>
 
@@ -100,7 +105,7 @@
             <header class="section-head">
                 <span class="section-head__index">/ 02</span>
                 <h2 class="section-title">Проекты</h2>
-                <p class="section-subtitle">Реальные работы и то, что сейчас в разработке</p>
+                <p class="section-subtitle">Реальные работы — всё можно посмотреть на GitHub</p>
             </header>
             <div class="tabs">
                 <button class="tab active" data-filter="all">Все</button>
@@ -135,7 +140,8 @@
                 <div class="contact-links">
                     <a href="https://github.com/yungdv" target="_blank" rel="noopener" class="contact-link" data-tooltip="GitHub"><img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub"></a>
                     <a href="https://t.me/yungdv" target="_blank" rel="noopener" class="contact-link" data-tooltip="Telegram"><img src="https://cdn.simpleicons.org/telegram/ffffff" alt="Telegram"></a>
-                    <a href="mailto:contact@yung.dev" class="contact-link" data-tooltip="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+                    <!-- ЗАМЕНИ на свой реальный email -->
+                    <a href="dvuzhilovd05@yandex.ru" class="contact-link" data-tooltip="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
                 </div>
                 <button class="contact-button" id="copyEmailBtn"><span>Скопировать email</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
