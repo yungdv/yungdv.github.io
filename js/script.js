@@ -74,19 +74,19 @@ const PROJECTS = [
     }
 ];
 
-const ICON = n => `https://cdn.simpleicons.org/${n}/ffffff`;
+const ICON = n => `https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/${n}.svg`;
 const SKILLS = {
     'Языки': [
-        ['python','Python',90],['openjdk','Java',75],['javascript','JavaScript',65],
-        ['php','PHP',65],['html5','HTML / CSS',85],['mysql','SQL',70]
+        ['python','Python'],['openjdk','Java'],['javascript','JavaScript'],
+        ['php','PHP'],['html5','HTML / CSS'],['mysql','SQL']
     ],
     'Фреймворки и библиотеки': [
-        ['django','Django',70],['fabric','Fabric',70],['pandas','pandas',70],
-        ['yii2','Yii2',65],['pytorch','ML / CV',60],['tailwindcss','Tailwind CSS',60]
+        ['django','Django'],['fabric','Fabric'],['pandas','pandas'],
+        ['yii','Yii2'],['pytorch','ML / CV'],['tailwindcss','Tailwind CSS']
     ],
     'Инструменты': [
-        ['git','Git',80],['githubactions','GitHub Actions',60],['gradle','Gradle',65],
-        ['docker','Docker',55],['linux','Linux',70]
+        ['git','Git'],['githubactions','GitHub Actions'],['gradle','Gradle'],
+        ['docker','Docker'],['linux','Linux']
     ]
 };
 
@@ -273,12 +273,9 @@ function renderSkills(){
     c.innerHTML=Object.entries(SKILLS).map(([cat,list])=>`
       <div class="skill-category">
         <div class="skill-category__title">${cat}</div>
-        ${list.map(([ic,nm,lv])=>`
+        ${list.map(([ic,nm])=>`
           <div class="skill-item">
-            <div class="skill-head">
-              <span class="skill-name"><img src="${ICON(ic)}" alt="" onerror="this.style.visibility='hidden'">${nm}</span>
-            </div>
-            <div class="skill-bar"><div class="skill-progress" data-w="${lv}"></div></div>
+            <span class="skill-name"><img src="${ICON(ic)}" alt="" data-letter="${nm[0]}" onerror="iconFallback(this,this.dataset.letter)">${nm}</span>
           </div>`).join('')}
       </div>`).join('');
 }

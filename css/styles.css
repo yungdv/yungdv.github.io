@@ -143,7 +143,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:1px solid rgba(
 .tech-stack{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-top:2rem}
 .tech-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border:1px solid var(--border);
     border-radius:50px;font-size:.85rem;color:var(--dim);background:var(--surface);transition:.3s}
-.tech-pill img{width:16px;height:16px;filter:grayscale(1) brightness(2);transition:.3s}
+.tech-pill img{width:16px;height:16px;filter:brightness(0) invert(1);transition:.3s}
 .tech-pill:hover{color:#fff;border-color:var(--border-strong);transform:translateY(-2px)}
 .tech-pill:hover img{filter:none}
 .scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;
@@ -154,7 +154,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:1px solid rgba(
 
 /* ============ STATS ============ */
 .stats{padding:3rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.stats__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.stats__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .stat{text-align:center;padding:1.5rem 1rem;position:relative}
 .stat:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:var(--border)}
 .stat__num{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-1px;color:#fff;font-variant-numeric:tabular-nums}
@@ -200,7 +200,7 @@ section.visible{opacity:1;transform:none}
 .skill-item:last-child{margin-bottom:0}
 .skill-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
 .skill-name{display:flex;align-items:center;gap:.6rem;font-size:.92rem}
-.skill-name img{width:16px;height:16px;filter:grayscale(1) brightness(2)}
+.skill-name img{width:16px;height:16px;filter:brightness(0) invert(1)}
 .skill-pct{font-family:var(--mono);font-size:.75rem;color:var(--dim)}
 .skill-bar{height:3px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
 .skill-progress{height:100%;width:0;background:linear-gradient(90deg,#666,#fff);transition:width 1.4s var(--ease)}
