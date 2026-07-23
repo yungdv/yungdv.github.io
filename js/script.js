@@ -1,11 +1,9 @@
 /* =========================================================
-   yungdv · portfolio — monochrome · real-data edition
+   yungdv · portfolio 
    ========================================================= */
 
-// ⚠️ ЗАМЕНИ на свой реальный email (используется в кнопке "скопировать" и в терминале)
 const EMAIL = 'dvuzhilovd05@yandex.ru';
 
-/* ---------- DATA (реальные проекты с github.com/yungdv) ---------- */
 const PROJECTS = [
     {
         icon:'🐔', status:'live',
@@ -90,7 +88,6 @@ const SKILLS = {
     ]
 };
 
-/* ---------- TOPO BACKGROUND (static contour map) ---------- */
 (function topo(){
     const cv = document.getElementById('topo-canvas');
     if(!cv) return;
@@ -153,7 +150,6 @@ const SKILLS = {
     draw();
 })();
 
-/* ---------- PRELOADER ---------- */
 (function preloader(){
     const el=document.getElementById('preloader');
     const fill=document.getElementById('preloaderFill');
@@ -168,7 +164,6 @@ const SKILLS = {
     },90);
 })();
 
-/* ---------- CUSTOM CURSOR ---------- */
 (function cursor(){
     if(!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
     const dot=document.getElementById('cursorDot'), ring=document.getElementById('cursorRing');
@@ -182,7 +177,7 @@ const SKILLS = {
     window.__cursorRebind=bind; bind();
 })();
 
-/* ---------- TYPING EFFECT ---------- */
+
 (function typing(){
     const el=document.getElementById('typed'); if(!el) return;
     // ✅ исправлено: убрана лишняя запятая, из-за которой первый элемент был undefined
@@ -199,7 +194,7 @@ const SKILLS = {
     setTimeout(tick,1800);
 })();
 
-/* ---------- AVATAR 3D ---------- */
+
 (function avatar3d(){
     const wrap=document.getElementById('avatarWrap'), av=document.getElementById('avatar');
     if(!wrap) return;
@@ -212,7 +207,7 @@ const SKILLS = {
     wrap.addEventListener('mouseleave',()=>av.style.transform='');
 })();
 
-/* ---------- RENDER PROJECTS (с фильтром) ---------- */
+
 let currentFilter='all';
 function renderProjects(){
     const g=document.getElementById('projectsGrid'); if(!g) return;
@@ -267,7 +262,6 @@ function renderProjects(){
     if(window.__cursorRebind) window.__cursorRebind();
 }
 
-/* ---------- RENDER SKILLS (без процентов) ---------- */
 function renderSkills(){
     const c=document.getElementById('skillsContainer'); if(!c) return;
     c.innerHTML=Object.entries(SKILLS).map(([cat,list])=>`
@@ -280,7 +274,6 @@ function renderSkills(){
       </div>`).join('');
 }
 
-/* ---------- TABS ---------- */
 function setupTabs(){
     document.querySelectorAll('.tab').forEach(t=>{
         t.addEventListener('click',()=>{
@@ -292,7 +285,6 @@ function setupTabs(){
     });
 }
 
-/* ---------- SCROLL REVEAL + BARS + COUNTERS ---------- */
 function setupObserver(){
     const io=new IntersectionObserver(es=>es.forEach(en=>{
         if(en.isIntersecting){
@@ -316,7 +308,7 @@ function countUp(el){
     })(t0);
 }
 
-/* ---------- NAV / BURGER / ACTIVE ---------- */
+
 function setupNav(){
     const nav=document.getElementById('navbar'), burger=document.getElementById('burger'), links=document.getElementById('navLinks');
     addEventListener('scroll',()=>{
@@ -328,7 +320,6 @@ function setupNav(){
     links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ burger.classList.remove('active'); links.classList.remove('active'); }));
 }
 
-/* ---------- COPY + TOAST ---------- */
 function setupCopy(){
     const btn=document.getElementById('copyEmailBtn'), toast=document.getElementById('toast');
     btn.addEventListener('click',()=>{
@@ -339,7 +330,6 @@ function setupCopy(){
     });
 }
 
-/* ---------- TERMINAL ---------- */
 (function terminal(){
     const overlay=document.getElementById('termOverlay'), body=document.getElementById('termBody'),
           input=document.getElementById('termInput'), open=document.getElementById('termTrigger'),
@@ -396,7 +386,6 @@ function setupCopy(){
     });
 })();
 
-/* ---------- INIT ---------- */
 document.addEventListener('DOMContentLoaded',()=>{
     renderProjects(); renderSkills(); setupTabs(); setupObserver(); setupNav(); setupCopy();
     document.getElementById('year').textContent=new Date().getFullYear();
