@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="yungdv — Junior Developer. Python, Java, PHP, Django, ML.">
+    <meta name="author" content="yungdv">
+    <meta property="og:title" content="yungdv — Junior Developer">
+    <meta property="og:description" content="Портфолио разработчика в монохромной эстетике.">
+    <meta property="og:type" content="website">
+    <title>yungdv — Junior Developer</title>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="preloader__inner">
+            <div class="preloader__name" data-text="yungdv">yungdv</div>
+            <div class="preloader__bar"><span id="preloaderFill"></span></div>
+            <div class="preloader__count"><span id="preloaderCount">0</span></div>
+        </div>
+    </div>
+
+    <!-- CURSOR -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- BACKGROUND -->
+    <canvas id="topo-canvas"></canvas>
+    <div class="vignette"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#about" class="logo"><span class="logo__mark">/</span><span class="logo__text">yungdv</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" class="nav-link active"><span>01</span> Обо мне</a></li>
+                <li><a href="#projects" class="nav-link"><span>02</span> Проекты</a></li>
+                <li><a href="#skills" class="nav-link"><span>03</span> Навыки</a></li>
+                <li><a href="#contact" class="nav-link"><span>04</span> Контакты</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="term-trigger" id="termTrigger" aria-label="Открыть терминал"><span class="term-trigger__icon">&gt;_</span></button>
+                <button class="burger" id="burger" aria-label="Меню"><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="about">
+        <div class="metal" aria-hidden="true"></div>
+        <div class="hero__content">
+            <div class="avatar-wrap" id="avatarWrap">
+                <div class="avatar" id="avatar">
+                    <img src="images/avatar.jpg" alt="yungdv" id="avatarImg"
+                         onerror="this.onerror=null;this.src='https://i.pinimg.com/736x/80/77/a9/8077a93827a36230bf00401b55f645da.jpg';">
+                </div>
+            </div>
+            <p class="hero__label">// junior software developer</p>
+            <h1 class="name">yungdv</h1>
+            <p class="subtitle" id="typed"></p>
+            <div class="status-badge"><span class="status-dot"></span> Open to work</div>
+            <div class="tech-stack">
+                <span class="tech-pill"><img src="https://cdn.simpleicons.org/python/ffffff" alt="">Python</span>
+                <span class="tech-pill"><img src="https://cdn.simpleicons.org/openjdk/ffffff" alt="">Java</span>
+                <span class="tech-pill"><img src="https://cdn.simpleicons.org/php/ffffff" alt="">PHP</span>
+                <span class="tech-pill"><img src="https://cdn.simpleicons.org/javascript/ffffff" alt="">JavaScript</span>
+                <span class="tech-pill"><img src="https://cdn.simpleicons.org/html5/ffffff" alt="">HTML/CSS</span>
+            </div>
+        </div>
+        <div class="scroll-indicator"><span>scroll</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </div>
+    </section>
+
+    <!-- ABOUT + STATS -->
+    <section class="stats">
+        <div class="container">
+            <p class="about-text">Привет, я <strong>yungdv</strong> — начинающий разработчик. Пишу в основном на <strong>Python</strong>, но также работаю с <strong>Java</strong> и <strong>PHP</strong>. Увлекаюсь всем подряд: от нейросетей до модов для Minecraft и веб-приложений на Django и Yii2. Сейчас ищу первую работу, где смогу расти в команде и писать полезный код.</p>
+            <div class="stats__grid">
+                <div class="stat"><div class="stat__num" data-count="8">0</div><div class="stat__label">проектов</div></div>
+                <div class="stat"><div class="stat__num" data-count="7">0</div><div class="stat__label">репозиториев</div></div>
+                <div class="stat"><div class="stat__num" data-count="15" data-suffix="+">0</div><div class="stat__label">технологий</div></div>
+                <div class="stat"><div class="stat__num" data-count="4">0</div><div class="stat__label">курс</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="container">
+            <header class="section-head">
+                <span class="section-head__index">/ 02</span>
+                <h2 class="section-title">Проекты</h2>
+                <p class="section-subtitle">Реальные работы и то, что сейчас в разработке</p>
+            </header>
+            <div class="tabs">
+                <button class="tab active" data-filter="all">Все</button>
+                <button class="tab" data-filter="mine">Мои проекты</button>
+                <button class="tab" data-filter="wip">В разработке</button>
+            </div>
+            <div class="projects-grid" id="projectsGrid"></div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="container">
+            <header class="section-head">
+                <span class="section-head__index">/ 03</span>
+                <h2 class="section-title">Навыки</h2>
+                <p class="section-subtitle">Стек и инструменты, с которыми работаю</p>
+            </header>
+            <div class="skills-container" id="skillsContainer"></div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <header class="section-head">
+                <span class="section-head__index">/ 04</span>
+                <h2 class="section-title">Контакты</h2>
+                <p class="section-subtitle">Открыт к предложениям и сотрудничеству</p>
+            </header>
+            <div class="contact-content">
+                <div class="contact-links">
+                    <a href="https://github.com/yungdv" target="_blank" rel="noopener" class="contact-link" data-tooltip="GitHub"><img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub"></a>
+                    <a href="https://t.me/yungdv" target="_blank" rel="noopener" class="contact-link" data-tooltip="Telegram"><img src="https://cdn.simpleicons.org/telegram/ffffff" alt="Telegram"></a>
+                    <a href="mailto:contact@yung.dev" class="contact-link" data-tooltip="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+                </div>
+                <button class="contact-button" id="copyEmailBtn"><span>Скопировать email</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>
+                <p class="contact-hint">или открой терминал — нажми <kbd>`</kbd></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer__row">
+            <span>© <span id="year">2026</span> yungdv</span>
+            <span class="footer__mono">made from scratch · no templates</span>
+        </div>
+    </footer>
+
+    <!-- TERMINAL -->
+    <div class="terminal-overlay" id="termOverlay">
+        <div class="terminal" id="terminal">
+            <div class="terminal__bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="terminal__title">yungdv@portfolio: ~</span>
+                <button class="terminal__close" id="termClose">✕</button></div>
+            <div class="terminal__body" id="termBody"></div>
+            <div class="terminal__input-line"><span class="prompt">yungdv@portfolio:~$</span>
+                <input type="text" id="termInput" autocomplete="off" spellcheck="false" autofocus></div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"><span class="toast__msg">Скопировано</span></div>
+
+    <script src="js/script.js"></script>
+    <script>
+      setTimeout(function(){
+        var p = document.getElementById('preloader');
+        if (p && !p.classList.contains('loaded')) p.classList.add('loaded');
+      }, 4000);
+    </script>
+</body>
+</html>
